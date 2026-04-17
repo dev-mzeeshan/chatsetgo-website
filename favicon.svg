@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ChatSetGo">
+  <rect width="64" height="64" rx="14" fill="#f97316"/>
+  <path d="M18 18h14c7.7 0 14 4.9 14 11s-6.3 11-14 11H27l-9 6V18Zm14 16c4.3 0 8-2.7 8-5s-3.7-5-8-5H24v10h8Z" fill="#070707"/>
+</svg>

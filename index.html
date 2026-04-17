@@ -7,6 +7,7 @@
   <title>ChatSetGo - We Automate. You Scale.</title>
   <meta name="description"
     content="#1 WhatsApp Automation Agency. Custom bots, AI workflows, and business automation for restaurants, salons, clinics & ecommerce.">
+  <link rel="icon" type="image/png" href="/logo.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -83,28 +84,11 @@
       text-decoration: none;
     }
 
-    .logo-sq {
-      width: 36px;
-      height: 36px;
-      background: var(--ora);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue';
-      font-size: 18px;
-      color: #000;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-sq::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, .2), transparent);
-      pointer-events: none;
+    .logo-img {
+      width: auto;
+      height: 50px;
+      display: block;
+      object-fit: contain;
     }
 
     .logo-name {
@@ -166,15 +150,101 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
+      background: var(--bg2);
     }
 
     .ham span {
       display: block;
       width: 22px;
       height: 2px;
-      background: #fff;
+      background: var(--ora);
       border-radius: 2px;
       transition: .3s;
+    }
+
+    .svc-icon svg,
+    .step-icon svg,
+    .wa-av svg,
+    .btn-ico,
+    .trust-ico {
+      width: 1em;
+      height: 1em;
+      display: block;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    .svc-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--ora);
+    }
+
+    .step-icon {
+      color: var(--ora);
+    }
+
+    .step-icon svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .wa-av svg {
+      width: 19px;
+      height: 19px;
+      color: #fff;
+    }
+
+    .ham.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .ham.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .ham.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(7, 7, 7, .98);
+      border-bottom: 1px solid var(--brd);
+      backdrop-filter: blur(24px);
+      display: none;
+      flex-direction: column;
+      padding: 14px 6% 20px;
+      gap: 8px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: #d4d4d8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 4px;
+      border-bottom: 1px solid #181818;
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 10px;
+      border-bottom: none;
+      text-align: center;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--ora);
+      color: #000;
+      font-family: 'Syne';
+      font-weight: 700;
     }
 
     /* ═══ HERO ═══ */
@@ -422,6 +492,15 @@
       text-align: center;
     }
 
+
+
+
+    .ti .trust-ico {
+      width: 14px;
+      height: 14px;
+      color: var(--ora);
+    }
+
     .tc .s-sub {
       margin: 0 auto;
     }
@@ -471,7 +550,7 @@
     /* ═══ SERVICES ═══ */
     .svc-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 18px;
       margin-top: 56px;
     }
@@ -517,9 +596,38 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
       margin-bottom: 20px;
       transition: transform .3s;
+    }
+
+    .svc-icon svg,
+    .step-icon svg,
+    .wa-av svg,
+    .btn-ico,
+    .trust-ico {
+      width: 1em;
+      height: 1em;
+      display: block;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    .svc-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--ora);
+    }
+
+    .step-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+      color: var(--ora);
+    }
+
+    .step-icon svg {
+      width: 34px;
+      height: 34px;
     }
 
     .svc-card:hover .svc-icon {
@@ -557,6 +665,14 @@
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .svc-tag.long {
+      font-size: 9px;
+      letter-spacing: .4px;
+      padding: 3px 8px;
     }
 
     /* ═══ HOW IT WORKS ═══ */
@@ -628,10 +744,11 @@
       line-height: 1.8;
     }
 
-    .step-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
-      display: block;
+
+    .wa-av svg {
+      width: 19px;
+      height: 19px;
+      color: #fff;
     }
 
     /* ═══ CASE STUDY ═══ */
@@ -1195,6 +1312,15 @@
     .ti {
       font-size: 13px;
       color: #52525b;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .ti .trust-ico {
+      width: 14px;
+      height: 14px;
+      color: var(--ora);
     }
 
     /* ═══ FOOTER ═══ */
@@ -1274,9 +1400,35 @@
       font-style: normal;
     }
 
+    .brand-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-note .trust-ico {
+      width: 13px;
+      height: 13px;
+    }
+
     /* ═══ RESPONSIVE ═══ */
     @media(max-width:900px) {
+      .hero {
+        height: auto;
+        min-height: 0;
+        padding-top: 120px;
+      }
+
+      .stats-bar {
+        position: relative;
+        margin-top: 42px;
+      }
+
       .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
         display: none;
       }
 
@@ -1298,6 +1450,19 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-h1 {
+        font-size: clamp(62px, 20vw, 96px);
+      }
+
+      .hero-sub {
+        line-height: 1.7;
+        margin-bottom: 32px;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
       section {
         padding: 80px 5%;
       }
@@ -1311,10 +1476,69 @@
 
 <body>
 
+  <svg aria-hidden="true" focusable="false" width="0" height="0"
+    style="position:absolute;left:-9999px;overflow:hidden;">
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path
+        d="M12 2a10 10 0 0 0-8.63 15L2 22l5.18-1.35A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.07-1.11l-.29-.17-3.07.8.82-2.99-.18-.31A8 8 0 1 1 12 20Zm4.62-5.92c-.25-.12-1.48-.73-1.71-.81s-.39-.12-.56.12-.64.8-.79.96-.29.18-.54.06a6.63 6.63 0 0 1-2-1.23 7.45 7.45 0 0 1-1.4-1.74c-.15-.26-.02-.4.11-.53.11-.11.25-.29.37-.43a1.64 1.64 0 0 0 .24-.4.46.46 0 0 0 0-.43c-.05-.12-.56-1.35-.77-1.85s-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31 2.76 2.76 0 0 0-.86 2.05 4.83 4.83 0 0 0 1.01 2.55 11.08 11.08 0 0 0 4.24 3.75 14.31 14.31 0 0 0 1.42.52 3.41 3.41 0 0 0 1.57.1 2.57 2.57 0 0 0 1.68-1.18 2.08 2.08 0 0 0 .14-1.18c-.06-.11-.23-.18-.48-.31Z" />
+    </symbol>
+    <symbol id="icon-bolt" viewBox="0 0 24 24">
+      <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+    </symbol>
+    <symbol id="icon-brain" viewBox="0 0 24 24">
+      <path
+        d="M8 3a4 4 0 0 0-4 4v1a3 3 0 0 0 1 2.24A3.5 3.5 0 0 0 8 16h.2A3 3 0 0 0 11 19h2a3 3 0 0 0 2.8-2H16a3.5 3.5 0 0 0 3-5.76A3 3 0 0 0 20 9V8a4 4 0 0 0-4-4 4.3 4.3 0 0 0-2.7 1A4 4 0 0 0 8 3Zm0 2a2 2 0 0 1 1.7 1 2 2 0 0 0 3.6 0A2 2 0 0 1 15 5a2 2 0 0 1 2 2v1.2l-.5 1.1.7.9a1.5 1.5 0 0 1-.9 2.4l-1.1.2-.3 1.1A1 1 0 0 1 14 15h-1.4l-.3 1.1A1 1 0 0 1 11.3 17h-2a1 1 0 0 1-.9-.6L8 15.3V15a2 2 0 0 1-2-2 1 1 0 0 1 0-.2l.2-1.4-.7-.4A1 1 0 0 1 5 10V8a2 2 0 0 1 2-2Z" />
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <path d="M4 19h16v2H2V3h2v16Zm3-2V9h3v8H7Zm5 0V5h3v12h-3Zm5 0v-6h3v6h-3Z" />
+    </symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24">
+      <path
+        d="M10.59 13.41a1.98 1.98 0 0 0 2.82 0l3.18-3.18a2 2 0 0 0-2.83-2.83l-1.41 1.42-1.41-1.42 1.41-1.41a4 4 0 1 1 5.66 5.66l-3.18 3.18a4 4 0 0 1-5.66 0l-1.06-1.06 1.41-1.41 1.07 1.05ZM13.41 10.59a1.98 1.98 0 0 0-2.82 0l-3.18 3.18a2 2 0 1 0 2.83 2.83l1.41-1.42 1.41 1.42-1.41 1.41a4 4 0 1 1-5.66-5.66l3.18-3.18a4 4 0 0 1 5.66 0l1.06 1.06-1.41 1.41-1.07-1.05Z" />
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path
+        d="M17 1H7a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm0 18H7V5h10v14Zm-5 3a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z" />
+    </symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24">
+      <path
+        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6Zm0-3a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z" />
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24">
+      <path
+        d="M19.14 12.94a7.93 7.93 0 0 0 .06-.94 7.93 7.93 0 0 0-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.21 7.21 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.89 2h-3.78a.5.5 0 0 0-.49.42l-.36 2.54a7.21 7.21 0 0 0-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.72 8.48a.5.5 0 0 0 .12.64l2.03 1.58a7.93 7.93 0 0 0-.06.94 7.93 7.93 0 0 0 .06.94L2.84 14.16a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.37 1.05.68 1.63.94l.36 2.54a.5.5 0 0 0 .49.42h3.78a.5.5 0 0 0 .49-.42l.36-2.54c.58-.26 1.13-.57 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5Z" />
+    </symbol>
+    <symbol id="icon-rocket" viewBox="0 0 24 24">
+      <path
+        d="M14.59 2.59A8 8 0 0 0 9 5L5.5 8.5A2 2 0 0 0 5 10v2l-3 3 2 2 3-3h2a2 2 0 0 0 1.5-.5L14 10a8 8 0 0 0 4.41-7.41V2h-3.82ZM15 5a5.9 5.9 0 0 1-1.46 3.85L11 11.4l-2.4-2.4L10.6 7A5.9 5.9 0 0 1 14.45 5H15Zm-5 9.5L9 15.5a2 2 0 0 1-1.5.5H6.91L5 18.91V19a3 3 0 0 0 3 3h.09L10.5 20h1.5a2 2 0 0 1 1.5.5l1.5 1.5h.09a3 3 0 0 0 3-3v-.09L17.5 18H16a2 2 0 0 1-1.5-.5L12 15.5Z" />
+    </symbol>
+    <symbol id="icon-burger" viewBox="0 0 24 24">
+      <path d="M4 9h16v2H4V9Zm1 4h14a2 2 0 0 1 0 4H5a2 2 0 0 1 0-4Zm1-8h12a2 2 0 0 1 0 4H6a2 2 0 0 1 0-4Z" />
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path
+        d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 3v11h16V7l-8 5-8-5Zm8 3-8-3h16l-8 3Z" />
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 5h-2v6l5 3 1-1.73-4-2.27V7Z" />
+    </symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24">
+      <path
+        d="M22 6.5a6.5 6.5 0 0 1-8.41 6.22L7.7 18.6a2 2 0 0 1-2.83 0l-.47-.47a2 2 0 0 1 0-2.83l5.88-5.88A6.5 6.5 0 0 1 17.5 2a6.4 6.4 0 0 1 2.02.32l-3.21 3.21 2.16 2.16 3.21-3.21A6.4 6.4 0 0 1 22 6.5Z" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="m9.2 16.2-4.2-4.2 1.4-1.4 2.8 2.8 8-8 1.4 1.4-9.4 9.4Z" />
+    </symbol>
+    <symbol id="icon-flag-pk" viewBox="0 0 24 24">
+      <path d="M6 3h2v18H6V3Zm2 1h11l-2 4 2 4H8V4Z" />
+      <path d="M13.6 7.2a2.8 2.8 0 1 0 2.6 3.8h-3l1.1-1.8-1.1-2a2.8 2.8 0 0 0 .4 0Z" fill="#fff" />
+    </symbol>
+  </svg>
+
   <!-- ══════════ NAV ══════════ -->
   <nav id="mainNav">
     <a href="#" class="logo">
-      <div class="logo-sq">C</div>
+      <img class="logo-img" src="/logo.png" alt="ChatSetGo">
       <span class="logo-name">CHATSET<em>GO</em></span>
     </a>
     <div class="nav-links">
@@ -1326,7 +1550,23 @@
     </div>
     <a href="https://wa.me/923353730974?text=Hi+ChatSetGo!+I+want+a+free+demo." class="nav-cta" target="_blank">Free
       Demo ↗</a>
+    <button class="ham" id="hamBtn" type="button" aria-label="Toggle menu" aria-expanded="false"
+      aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#case">Case Study</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/923353730974?text=Hi+ChatSetGo!+I+want+a+free+demo." class="mobile-cta" target="_blank">Free
+      Demo ↗</a>
+  </div>
 
   <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="hero">
@@ -1338,12 +1578,15 @@
       <p class="hero-sub">ChatSetGo builds WhatsApp bots, AI workflows, and business automation - so your business runs
         24/7 while you focus on what matters.</p>
       <div class="hero-btns">
-        <a class="btn-p" href="https://wa.me/923353730974?text=Hi+ChatSetGo!+I+want+a+free+demo." target="_blank">💬 Get
+        <a class="btn-p" href="https://wa.me/923353730974?text=Hi+ChatSetGo!+I+want+a+free+demo." target="_blank"><svg
+            class="btn-ico" aria-hidden="true">
+            <use href="#icon-whatsapp"></use>
+          </svg> Get
           Free Demo</a>
         <a class="btn-s" href="#pricing">See Pricing →</a>
       </div>
     </div>
-    <div class="stats-bar">
+    <!-- <div class="stats-bar">
       <div>
         <div class="stat-n" data-count="1">0</div>
         <div class="stat-l">Bot Deployed</div>
@@ -1360,7 +1603,7 @@
         <div class="stat-n">3–7</div>
         <div class="stat-l">Days to Launch</div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <!-- ══════════ 3D DIVIDER ══════════ -->
@@ -1376,54 +1619,68 @@
       </div>
       <div class="svc-grid">
         <div class="svc-card reveal d1">
-          <div class="svc-icon">💬</div>
+          <div class="svc-icon"><svg aria-hidden="true">
+              <use href="#icon-whatsapp"></use>
+            </svg></div>
           <div class="svc-t">WhatsApp Automation</div>
-          <p class="svc-d">24/7 intelligent bots for orders, FAQs, lead capture, and support. Built on Evolution API &
+          <p class="svc-d">24/7 intelligent bots for orders, FAQs, lead capture, and support. Built on Official WhatsApp
+            API &
             Meta Cloud API.</p>
-          <div class="svc-tags"><span class="svc-tag">Evolution API</span><span class="svc-tag">Meta Cloud</span><span
-              class="svc-tag">n8n</span></div>
+          <div class="svc-tags"><span class="svc-tag long">Official WhatsApp API</span><span class="svc-tag">Meta Cloud</span><span class="svc-tag">Automation</span></div>
         </div>
         <div class="svc-card reveal d2">
-          <div class="svc-icon">⚡</div>
+          <div class="svc-icon"><svg aria-hidden="true">
+              <use href="#icon-bolt"></use>
+            </svg></div>
           <div class="svc-t">Workflow Automation</div>
-          <p class="svc-d">Connect apps, eliminate manual work, and automate repetitive tasks with n8n-powered smart
-            workflows.</p>
-          <div class="svc-tags"><span class="svc-tag">n8n</span><span class="svc-tag">Zapier</span><span
-              class="svc-tag">API</span></div>
+                <p class="svc-d">Connect apps, eliminate manual work, and automate repetitive tasks with smart
+                  workflows.</p>
+               
+              </div>
+              <div class="svc-card reveal d3">
+                <div class="svc-icon"><svg aria-hidden="true">
+                    <use href="#icon-brain"></use>
+                  </svg></div>
+                <div class="svc-t">AI Chatbots</div>
+                <p class="svc-d">GPT-4 & Llama-powered bots trained on your business data to handle complex, natural
+                  conversations.</p>
+                <div class="svc-tags"><span class="svc-tag">GPT-4</span><span class="svc-tag">Llama 3</span><span
+                    class="svc-tag">RAG</span></div>
+              </div>
+              <div class="svc-card reveal d1">
+                <div class="svc-icon"><svg aria-hidden="true">
+                    <use href="#icon-chart"></use>
+                  </svg></div>
+                <div class="svc-t">Business Dashboard</div>
+                <p class="svc-d">Real-time custom analytics - orders, revenue, leads, and performance. All in one place,
+                  all
+                  automated.</p>
+                <div class="svc-tags"><span class="svc-tag">Real-time</span><span class="svc-tag">Analytics</span><span
+                    class="svc-tag">Custom</span></div>
+              </div>
+              <div class="svc-card reveal d2">
+                <div class="svc-icon"><svg aria-hidden="true">
+                    <use href="#icon-link"></use>
+                  </svg></div>
+                <div class="svc-t">CRM Integration</div>
+                <p class="svc-d">Connect Google Sheets, Airtable, HubSpot and more into one seamless automated
+                  ecosystem.</p>
+                <div class="svc-tags"><span class="svc-tag">Google Sheets</span><span
+                    class="svc-tag">HubSpot</span><span class="svc-tag">Airtable</span></div>
+              </div>
+              <div class="svc-card reveal d3">
+                <div class="svc-icon"><svg aria-hidden="true">
+                    <use href="#icon-phone"></use>
+                  </svg></div>
+                <div class="svc-t">Social Media Automation</div>
+                <p class="svc-d">Auto-reply, schedule, and capture leads from Instagram & Facebook - zero effort,
+                  maximum
+                  reach.</p>
+                <div class="svc-tags"><span class="svc-tag">Instagram</span><span class="svc-tag">Facebook</span><span
+                    class="svc-tag">Auto-DM</span></div>
+              </div>
+          </div>
         </div>
-        <div class="svc-card reveal d3">
-          <div class="svc-icon">🤖</div>
-          <div class="svc-t">AI Chatbots</div>
-          <p class="svc-d">GPT-4 & Llama-powered bots trained on your business data to handle complex, natural
-            conversations.</p>
-          <div class="svc-tags"><span class="svc-tag">GPT-4</span><span class="svc-tag">Llama 3</span><span
-              class="svc-tag">RAG</span></div>
-        </div>
-        <div class="svc-card reveal d1">
-          <div class="svc-icon">📊</div>
-          <div class="svc-t">Business Dashboard</div>
-          <p class="svc-d">Real-time custom analytics - orders, revenue, leads, and performance. All in one place, all
-            automated.</p>
-          <div class="svc-tags"><span class="svc-tag">Real-time</span><span class="svc-tag">Analytics</span><span
-              class="svc-tag">Custom</span></div>
-        </div>
-        <div class="svc-card reveal d2">
-          <div class="svc-icon">🔗</div>
-          <div class="svc-t">CRM Integration</div>
-          <p class="svc-d">Connect Google Sheets, Airtable, HubSpot and more into one seamless automated ecosystem.</p>
-          <div class="svc-tags"><span class="svc-tag">Google Sheets</span><span class="svc-tag">HubSpot</span><span
-              class="svc-tag">Airtable</span></div>
-        </div>
-        <div class="svc-card reveal d3">
-          <div class="svc-icon">📱</div>
-          <div class="svc-t">Social Media Automation</div>
-          <p class="svc-d">Auto-reply, schedule, and capture leads from Instagram & Facebook - zero effort, maximum
-            reach.</p>
-          <div class="svc-tags"><span class="svc-tag">Instagram</span><span class="svc-tag">Facebook</span><span
-              class="svc-tag">Auto-DM</span></div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ══════════ 3D DIVIDER 2 ══════════ -->
@@ -1439,7 +1696,9 @@
       </div>
       <div class="steps" id="stepsWrap">
         <div class="step reveal d1">
-          <span class="step-icon">🎯</span>
+          <span class="step-icon"><svg aria-hidden="true">
+              <use href="#icon-target"></use>
+            </svg></span>
           <div class="step-bg">01</div>
           <div class="step-num">STEP 01</div>
           <h3 class="step-t">Tell Us Your Problem</h3>
@@ -1447,7 +1706,9 @@
             automation wins for you.</p>
         </div>
         <div class="step reveal d2">
-          <span class="step-icon">⚙️</span>
+          <span class="step-icon"><svg aria-hidden="true">
+              <use href="#icon-gear"></use>
+            </svg></span>
           <div class="step-bg">02</div>
           <div class="step-num">STEP 02</div>
           <h3 class="step-t">We Build the Solution</h3>
@@ -1455,7 +1716,9 @@
             how your business works.</p>
         </div>
         <div class="step reveal d3">
-          <span class="step-icon">🚀</span>
+          <span class="step-icon"><svg aria-hidden="true">
+              <use href="#icon-rocket"></use>
+            </svg></span>
           <div class="step-bg">03</div>
           <div class="step-num">STEP 03</div>
           <h3 class="step-t">You Sit Back & Grow</h3>
@@ -1490,21 +1753,23 @@
               <div class="chk-ic">✓</div>Handles multiple orders simultaneously
             </div>
             <div class="chk">
-              <div class="chk-ic">✓</div>Built on Evolution API + n8n workflows
+              <div class="chk-ic">✓</div>Built on Official WhatsApp API + workflows
             </div>
             <div class="chk">
               <div class="chk-ic">✓</div>50+ orders/day fully automated
             </div>
           </div>
           <div class="tech-row">
-            <span class="tech-t">Evolution API</span><span class="tech-t">n8n</span><span
+            <span class="tech-t">Official WhatsApp API</span><span
               class="tech-t">WhatsApp</span><span class="tech-t">Islamabad</span><span class="tech-t">Restaurant</span>
           </div>
         </div>
         <div class="reveal d2 wa-wrap">
           <div class="wa-phone" id="waPhone">
             <div class="wa-hdr">
-              <div class="wa-av">🍔</div>
+              <div class="wa-av"><svg aria-hidden="true">
+                  <use href="#icon-burger"></use>
+                </svg></div>
               <div>
                 <div class="wa-nm">XYZ FastFood Bot</div>
                 <div class="wa-st"><span class="wa-dot"></span> Online · Automated</div>
@@ -1557,7 +1822,7 @@
               <div class="pfc">✓</div>Urdu, Roman Urdu & English support
             </div>
             <div class="pfeat">
-              <div class="pfc">✓</div>n8n workflow automation
+              <div class="pfc">✓</div>workflow automation
             </div>
             <div class="pfeat">
               <div class="pfc">✓</div>1 month free support
@@ -1689,15 +1954,30 @@
         that saves you time and drives real growth.</p>
       <div class="cta-btns">
         <a href="https://wa.me/923353730974?text=Hi+ChatSetGo!+I+want+to+automate+my+business." class="btn-p"
-          target="_blank" style="font-size:16px;padding:18px 42px;">💬 WhatsApp Us Now</a>
-        <a href="mailto:hello@chatsetgo.tech" class="btn-s" style="font-size:16px;padding:18px 36px;">📧 Send Email</a>
+          target="_blank" style="font-size:16px;padding:18px 42px;"><svg class="btn-ico" aria-hidden="true">
+            <use href="#icon-whatsapp"></use>
+          </svg> WhatsApp Us Now</a>
+        <a href="mailto:hello@chatsetgo.tech" class="btn-s" style="font-size:16px;padding:18px 36px;"><svg
+            class="btn-ico" aria-hidden="true">
+            <use href="#icon-mail"></use>
+          </svg> Send Email</a>
       </div>
       <div class="trust-bar">
-        <span class="ti">🇵🇰 Based in Islamabad</span>
-        <span class="ti">⚡ Live in 3–7 Days</span>
-        <span class="ti">🔧 100% Custom Built</span>
-        <span class="ti">📞 Free Consultation</span>
-        <span class="ti">💯 Satisfaction Guarantee</span>
+        <span class="ti"><svg class="trust-ico" aria-hidden="true">
+            <use href="#icon-flag-pk"></use>
+          </svg> Based in Islamabad</span>
+        <span class="ti"><svg class="trust-ico" aria-hidden="true">
+            <use href="#icon-clock"></use>
+          </svg> Live in 3–7 Days</span>
+        <span class="ti"><svg class="trust-ico" aria-hidden="true">
+            <use href="#icon-wrench"></use>
+          </svg> 100% Custom Built</span>
+        <span class="ti"><svg class="trust-ico" aria-hidden="true">
+            <use href="#icon-phone"></use>
+          </svg> Free Consultation</span>
+        <span class="ti"><svg class="trust-ico" aria-hidden="true">
+            <use href="#icon-check"></use>
+          </svg> Satisfaction Guarantee</span>
       </div>
     </div>
   </section>
@@ -1742,7 +2022,9 @@
       </div>
       <div class="ft-bottom">
         <div class="ft-copy">© 2026 ChatSetGo. All rights reserved.</div>
-        <div class="ft-made">Built with <em>⚡</em> by Muhammad Zeeshan & Malik Hassan Munir</div>
+        <div class="ft-made">Built with <em><svg class="trust-ico" aria-hidden="true">
+              <use href="#icon-bolt"></use>
+            </svg></em> by Muhammad Zeeshan & Malik Hassan Munir</div>
       </div>
     </div>
   </footer>
@@ -1869,6 +2151,21 @@
     // ═══════════ NAV SCROLL ═══════════
     window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 40));
 
+    // ═══════════ MOBILE NAV TOGGLE ═══════════
+    const hamBtn = document.getElementById('hamBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function setMenu(open) {
+      if (!hamBtn || !mobileMenu) return;
+      hamBtn.classList.toggle('active', open);
+      mobileMenu.classList.toggle('open', open);
+      hamBtn.setAttribute('aria-expanded', String(open));
+    }
+    if (hamBtn && mobileMenu) {
+      hamBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+      window.addEventListener('resize', () => { if (innerWidth > 900) setMenu(false); });
+    }
+
     // ═══════════ 3D CARD TILT ═══════════
     document.querySelectorAll('.svc-card').forEach(c => {
       c.addEventListener('mousemove', e => {
@@ -1907,13 +2204,13 @@
 
     // ═══════════ WA CHAT ANIMATION ═══════════
     const msgs = [
-      { k: 'r', t: 'Assalam o Alaikum! 👋 Welcome to XYZ FastFood.<br>Reply <b>MENU</b> to see today\'s deals!', d: 0 },
+      { k: 'r', t: 'Assalam o Alaikum! Welcome to XYZ FastFood.<br>Reply <b>MENU</b> to see today\'s deals!', d: 0 },
       { k: 's', t: 'MENU', d: 1100 },
-      { k: 'r', t: '🍽️ <b>Today\'s Menu:</b><br>1. Zinger Burger - Rs.350<br>2. Pizza Slice - Rs.280<br>3. Fries + Drink - Rs.200<br>4. Chicken Roll - Rs.220<br><br>Reply item number to order!', d: 2100 },
+      { k: 'r', t: '<b>Today\'s Menu:</b><br>1. Zinger Burger - Rs.350<br>2. Pizza Slice - Rs.280<br>3. Fries + Drink - Rs.200<br>4. Chicken Roll - Rs.220<br><br>Reply item number to order!', d: 2100 },
       { k: 's', t: '1', d: 3400 },
-      { k: 'ai', t: '✅ <b>Zinger Burger</b> added!<br>Total: Rs.350<br><br>📍 Please share your address:', d: 4200 },
+      { k: 'ai', t: '<b>Zinger Burger</b> added!<br>Total: Rs.350<br><br>Please share your address:', d: 4200 },
       { k: 's', t: 'F-10 Markaz, Islamabad', d: 5500 },
-      { k: 'ai', t: '🎉 <b>Order Confirmed! #124</b><br>Amount: Rs.350 (COD)<br>ETA: 25–30 mins<br><br>Thank you! We\'ll notify you when it\'s on the way 🛵', d: 6500 }
+      { k: 'ai', t: '<b>Order Confirmed! #124</b><br>Amount: Rs.350 (COD)<br>ETA: 25–30 mins<br><br>Thank you! We\'ll notify you when it\'s on the way.', d: 6500 }
     ];
     let chatDone = false;
     function initChat() {
