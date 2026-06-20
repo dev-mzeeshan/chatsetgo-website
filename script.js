@@ -1,14 +1,25 @@
+// ═══════════ GA4 ANALYTICS INIT ═══════════
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-11XFC47N3H'); // ← Replace with your Measurement ID
+
+// ═══════════ DEVICE & MOTION DETECTION ═══════════
+const _mobile = window.innerWidth < 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+const _reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // ═══════════ THREE.JS HERO PARTICLES ═══════════
 (function () {
     const cv = document.getElementById('heroCanvas');
     if (!cv || typeof THREE === 'undefined') return;
+    if (_reduced) return; // prefers-reduced-motion
     const W = window.innerWidth, H = window.innerHeight;
-    const r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: true });
-    r.setSize(W, H); r.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: !_mobile });
+    r.setSize(W, H); r.setPixelRatio(_mobile ? 1 : Math.min(devicePixelRatio, 2));
     const sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(55, W / H, .1, 1000);
     cam.position.z = 32;
-    // Particles
-    const N = 2400, p = new Float32Array(N * 3), c = new Float32Array(N * 3), v = [];
+    // Particles — reduced on mobile for performance
+    const N = _mobile ? 500 : 2400, p = new Float32Array(N * 3), c = new Float32Array(N * 3), v = [];
     for (let i = 0; i < N; i++) {
         p[i * 3] = (Math.random() - .5) * 90; p[i * 3 + 1] = (Math.random() - .5) * 65; p[i * 3 + 2] = (Math.random() - .5) * 45;
         const t = Math.random();
@@ -73,16 +84,17 @@ function makeScene3D(canvasId, color, shapes) {
         r.render(sc, cam);
     })();
 }
-makeScene3D('sc1', 0xF97316, [
+// 3D dividers skipped on mobile — decorative only
+if (!_mobile && !_reduced) makeScene3D('sc1', 0xF97316, [
     { t: 'oct', r: 2, x: -12, y: 0, op: .18 }, { t: 'ico', r: 1.5, x: 0, y: 0, op: .12 },
     { t: 'tor', r: 3, tube: .2, x: 10, y: .5, op: .1 }, { t: 'oct', r: 1, x: 6, y: -1, op: .15 },
     { t: 'ico', r: 2.5, x: -5, y: 0, op: .08 }, { t: 'box', r: 1.2, x: 16, y: .5, op: .13 }
 ]);
-makeScene3D('sc2', 0xF97316, [
+if (!_mobile && !_reduced) makeScene3D('sc2', 0xF97316, [
     { t: 'ico', r: 2.2, x: -10, y: 0, op: .15 }, { t: 'tor', r: 2.5, tube: .15, x: 2, y: 0, op: .12 },
     { t: 'oct', r: 1.8, x: 12, y: 0, op: .18 }, { t: 'box', r: 1, x: -4, y: 0, op: .1 }, { t: 'ico', r: 1, x: 18, y: 0, op: .14 }
 ]);
-makeScene3D('sc3', 0xF97316, [
+if (!_mobile && !_reduced) makeScene3D('sc3', 0xF97316, [
     { t: 'box', r: 1.5, x: -14, y: 0, op: .14 }, { t: 'oct', r: 2, x: -2, y: 0, op: .16 },
     { t: 'ico', r: 1.8, x: 8, y: .5, op: .12 }, { t: 'tor', r: 3, tube: .18, x: -8, y: 0, op: .1 }, { t: 'box', r: 1, x: 14, y: 0, op: .15 }
 ]);
@@ -91,12 +103,13 @@ makeScene3D('sc3', 0xF97316, [
 (function () {
     const cv = document.getElementById('ctaCanvas');
     if (!cv || typeof THREE === 'undefined') return;
+    if (_reduced) return;
     const el = cv.parentElement, W = el.offsetWidth || 800, H = el.offsetHeight || 600;
-    const r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: true });
-    r.setSize(W, H); r.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: !_mobile });
+    r.setSize(W, H); r.setPixelRatio(_mobile ? 1 : Math.min(devicePixelRatio, 2));
     const sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(50, W / H, .1, 500);
     cam.position.z = 22;
-    const N = 1000, p = new Float32Array(N * 3), c = new Float32Array(N * 3);
+    const N = _mobile ? 200 : 1000, p = new Float32Array(N * 3), c = new Float32Array(N * 3);
     for (let i = 0; i < N; i++) {
         const rd = 10 + Math.random() * 14, th = Math.random() * Math.PI * 2, ph = (Math.random() - .5) * .7;
         p[i * 3] = rd * Math.cos(th) * Math.cos(ph); p[i * 3 + 1] = rd * Math.sin(ph); p[i * 3 + 2] = rd * Math.sin(th) * Math.cos(ph);
