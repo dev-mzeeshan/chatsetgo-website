@@ -2,7 +2,7 @@
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
-gtag('config', 'G-11XFC47N3H'); // ← Replace with your Measurement ID
+gtag('config', 'G-11XFC47N3H'); // ← Replace with your Measurement ID from analytics.google.com
 
 // ═══════════ DEVICE & MOTION DETECTION ═══════════
 const _mobile = window.innerWidth < 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
@@ -12,13 +12,13 @@ const _reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function () {
     const cv = document.getElementById('heroCanvas');
     if (!cv || typeof THREE === 'undefined') return;
-    if (_reduced) return; // prefers-reduced-motion
+    if (_reduced) return; // respect prefers-reduced-motion
     const W = window.innerWidth, H = window.innerHeight;
     const r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: !_mobile });
     r.setSize(W, H); r.setPixelRatio(_mobile ? 1 : Math.min(devicePixelRatio, 2));
     const sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(55, W / H, .1, 1000);
     cam.position.z = 32;
-    // Particles — reduced on mobile for performance
+    // Particles — 500 on mobile, 2400 on desktop
     const N = _mobile ? 500 : 2400, p = new Float32Array(N * 3), c = new Float32Array(N * 3), v = [];
     for (let i = 0; i < N; i++) {
         p[i * 3] = (Math.random() - .5) * 90; p[i * 3 + 1] = (Math.random() - .5) * 65; p[i * 3 + 2] = (Math.random() - .5) * 45;
@@ -84,7 +84,7 @@ function makeScene3D(canvasId, color, shapes) {
         r.render(sc, cam);
     })();
 }
-// 3D dividers skipped on mobile — decorative only
+// 3D dividers skipped on mobile — purely decorative, saves 3 WebGL contexts
 if (!_mobile && !_reduced) makeScene3D('sc1', 0xF97316, [
     { t: 'oct', r: 2, x: -12, y: 0, op: .18 }, { t: 'ico', r: 1.5, x: 0, y: 0, op: .12 },
     { t: 'tor', r: 3, tube: .2, x: 10, y: .5, op: .1 }, { t: 'oct', r: 1, x: 6, y: -1, op: .15 },
